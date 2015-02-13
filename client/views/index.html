@@ -10,8 +10,8 @@
     <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
     <!-- Place favicon.ico in the root directory -->
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-resource.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/genres-controller.js"></script>
@@ -29,7 +29,7 @@
         <h1>Subgenre</h1>
         <ul>
           <li ng-repeat="genreGroup in groupedGenres">
-            {{genreGroup.label}}
+            {{genreGroup.parentGenre.name}}
             <ul>
               <li ng-repeat="subGenre in genreGroup.subGenres">
                 {{subGenre.name}}
@@ -43,8 +43,8 @@
           <h4>Add Genre</h4>
           <form ng-submit="createGenre()">
             <select ng-model="parentGenre">
-              <option>-</option>
-              <option ng-repeat="genre in genres" value="{{genre.name}}">{{genre.name}}</option>
+              <option></option>
+              <option ng-repeat="genre in genres" value="{{genre._id}}">{{genre.name}}</option>
             </select>
             <br/>
             <input type="text" placeholder="Name" ng-model="genreName"></input>
