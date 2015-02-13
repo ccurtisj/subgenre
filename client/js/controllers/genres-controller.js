@@ -9,6 +9,7 @@ app.controller('genresController', ['$scope',  '$resource', function($scope, $re
   $scope.createGenre = function(){
     var genre = new Genre();
     genre.name = $scope.genreName;
+    genre.parentGenre = $scope.parentGenre
 
     genre.$save(function(result){
       $scope.genres.push(result);

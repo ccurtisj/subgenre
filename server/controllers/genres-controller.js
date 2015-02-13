@@ -1,14 +1,14 @@
-var Meetup = require('../models/meetup');
+var Genre = require('../models/genre');
 
 module.exports.list = function(req, res){
-  Meetup.find({}, function(err, results){
+  Genre.find({}, function(err, results){
     res.json(results)
   });
 };
 
 module.exports.create = function(req, res){
-  var meetup = new Meetup(req.body)
-  meetup.save(function(err, result){
+  var genre = new Genre(req.body)
+  genre.save(function(err, result){
     res.json(result);
   });
 }

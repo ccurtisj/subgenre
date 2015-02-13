@@ -28,7 +28,7 @@
         <h1>Subgenre</h1>
         <ul>
           <li ng-repeat="genre in genres">
-            {{genre.name}}
+            {{genre.name}} - {{genre.parentGenre}}
           </li>
         </ul>
       </div>
@@ -36,6 +36,10 @@
         <div class="panel">
           <h4>Add Genre</h4>
           <form ng-submit="createGenre()">
+            <select ng-model="parentGenre">
+              <option ng-repeat="genre in genres" value="{{genre.name}}">{{genre.name}}</option>
+            </select>
+            <br/>
             <input type="text" placeholder="Name" ng-model="genreName"></input>
             <button type="submit">Add Genre</button>
           </form>
