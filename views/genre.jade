@@ -21,10 +21,17 @@ head
       .col-md-4.col-md-offset-2
         h1= genre.name
 
+        h4 Parent Genre
+        ul
+          li
+            a(href='/genres/{{parentGenre.name}}') {{parentGenre.name}}
+
         h4 Sibling Genres
         ul
-          li(ng-repeat="genre in siblingGenres") {{genre.name}}
+          li(ng-repeat="genre in siblingGenres")
+            a(href='/genres/{{genre.name}}') {{genre.name}}
 
         h4 Sub Genres
         ul
-          li(ng-repeat="genre in subGenres") {{genre.name}}
+          li(ng-repeat="genre in subGenres")
+            a(href='/genres/{{genre.name}}') {{genre.name}}

@@ -15,4 +15,13 @@ genreSchema.methods.findSubGenres = function(next){
   });
 }
 
+genreSchema.methods.findSiblings = function(next){
+  return this.model('Genre')
+    .find({parentGenre: this.parentGenre})
+    .exec(function(err, siblings){
+      if(err) return console.log(err);
+        next(siblings);
+  });
+}
+
 module.exports = mongoose.model('Genre', genreSchema);

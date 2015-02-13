@@ -22,20 +22,17 @@ module.exports.show = function(req, res){
 }
 
 module.exports.getGenreByName = function(req, res){
-  Genre.findOne({name: req.params.genreName}, function(err, genre){
+  Genre.findOne({name: req.params.genreName}).populate('parentGenre').exec(function(err, genre){
     if(err) return console.log(err);
 
     // Find subgenres
     genre.findSubGenres(function(subGenres){
-      var payload = genre.toJSON();
-      payload.subGenres = subGenres;
-
-      Genre
-        .find({parentGenre: genre.parentGenre})
-        .exec(function(err, siblings){
-          payload.siblings = siblings;
-          res.json(payload);
+      genre.findSiblings(function(siblings){
+        var payload = genre.toJSON();
+        payload.subGenres = subGenres;
+        payload.siblings = siblings;
+        res.json(payload);
       });
-    })
+    });
   });
 }
