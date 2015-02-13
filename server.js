@@ -10,6 +10,9 @@ app.listen(3000, function(){
   console.log("I'm listening...");
 })
 
+// Config
+app.set('view engine', 'jade');
+
 // Middleware
 app.use(bodyParser());
 app.use('/js', express.static(__dirname + '/client/js'));
@@ -17,7 +20,7 @@ app.use('/css', express.static(__dirname + '/client/css'));
 
 // Routes
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/client/views/index.html')
+  res.render('../server/views/index', { title: 'Hey', message: 'Hello there!'});
 });
 
 app.get('/api/genres', genresController.list)
