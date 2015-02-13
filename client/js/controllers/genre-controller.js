@@ -5,6 +5,7 @@ app.controller('genreController', ['$scope', '$resource', '_', function($scope, 
   $scope.init = function(genreName){
     Genre.get({genreName: genreName}, function(genre){
       $scope.subGenres = genre.subGenres;
+      $scope.siblingGenres = genre.siblings;
     });
   }
 

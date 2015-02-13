@@ -26,15 +26,16 @@ module.exports.getGenreByName = function(req, res){
     if(err) return console.log(err);
 
     // Find subgenres
-    Genre
-      .find({parentGenre: genre._id})
-      .select('name')
-      .exec(function(err, subGenres){
-      if(err) return console.log(err);
-
+    genre.findSubGenres(function(subGenres){
       var payload = genre.toJSON();
       payload.subGenres = subGenres;
-      res.json(payload);
+
+      Genre
+        .find({parentGenre: genre.parentGenre})
+        .exec(function(err, siblings){
+          payload.siblings = siblings;
+          res.json(payload);
+      });
     })
   });
 }

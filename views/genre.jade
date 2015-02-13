@@ -21,5 +21,10 @@ head
       .col-md-4.col-md-offset-2
         h1= genre.name
 
+        h4 Sibling Genres
         ul
-          li(ng-repeat="subGenre in subGenres") {{subGenre.name}}
+          li(ng-repeat="genre in siblingGenres") {{genre.name}}
+
+        h4 Sub Genres
+        ul
+          li(ng-repeat="genre in subGenres") {{genre.name}}

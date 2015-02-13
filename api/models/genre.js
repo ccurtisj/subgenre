@@ -6,4 +6,13 @@ var genreSchema = new Schema({
   name : String
 })
 
+genreSchema.methods.findSubGenres = function(next){
+  return this.model('Genre')
+    .find({parentGenre: this._id})
+    .exec(function(err, subGenres){
+    if(err) return console.log(err);
+      next(subGenres);
+  });
+}
+
 module.exports = mongoose.model('Genre', genreSchema);
