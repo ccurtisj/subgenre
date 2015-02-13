@@ -27,27 +27,4 @@ head
 
     .container(ng-controller='genresController')
       .col-md-4.col-md-offset-2
-        h1 Subgenre
-
-        ul
-          li(ng-repeat='genreGroup in groupedGenres')
-            | {{genreGroup.parentGenre.name}}
-            ul
-              li(ng-repeat='subGenre in genreGroup.subGenres')
-                |{{subGenre.name}}
-
-      .col-md-4
-        .panel
-          h4 Add Genre
-
-          form(ng-submit='createGenre()')
-            select(ng-model='parentGenre')
-              option
-
-              option(ng-repeat='genre in genres', value='{{genre._id}}') {{genre.name}}
-
-            br
-
-            input(type='text', placeholder='Name', ng-model='genreName')
-
-            button(type='submit') Add Genre
+        h1= genre
