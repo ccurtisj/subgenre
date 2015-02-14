@@ -7,4 +7,17 @@ app.controller('genreController', ['$scope', '$resource', '_', function($scope, 
       $scope.genre = genre;
     });
   }
+
+  $scope.createSubGenre = function(){
+    var subgenre = new Genre();
+    subgenre.name = $scope.genreName;
+    subgenre.parentGenre = $scope.genre._id
+
+    console.log(subgenre)
+
+    subgenre.$save(function(result){
+      console.log(result)
+      window.location = '/genres/' + result.slug
+    });
+  }
 }]);

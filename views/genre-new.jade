@@ -1,0 +1,27 @@
+extends layout
+
+block head
+  script(src='/js/controllers/genre-controller.js')
+
+block content
+  div(ng-controller='genreController' ng-init="init('#{genre.slug}')")
+    .row
+      .col-md-6
+        p.sub-head
+          |Add a #{' '}
+          a(href='/genres/#{genre.slug}') <b>#{genre.name}</b>
+          |  subgenre
+
+        form(ng-submit='createSubGenre()')
+          .form-group
+            label(for="name") Subgenre Name
+            input.form-control(type="text" placeholder="ex: Ska Punk" ng-model="genreName")
+            p.help-block Skip the punctuation please
+
+          .form-group
+            label(for="name" ng-model="genreDefinition") Your Definition
+            p.help-block What does it sound like? Where did it come from?
+            textarea.form-control
+
+          button.btn.btn-default(type="submit") Add Subgenre
+          a.cancel(href='/genres/#{genre.slug}') Nevermind

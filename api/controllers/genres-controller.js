@@ -25,6 +25,16 @@ module.exports.show = function(req, res){
   });
 }
 
+module.exports.newSubGenre = function(req, res){
+  Genre
+    .findOne({slug: req.params.slug})
+    .exec(function(err, response){
+
+    if(err) return console.log(err);
+    res.render('genre-new', {genre: response})
+  });
+}
+
 module.exports.getGenreBySlug = function(req, res){
   Genre.findOne({slug: req.params.slug}).populate('parentGenre').exec(function(err, genre){
     if(err) return console.log(err);

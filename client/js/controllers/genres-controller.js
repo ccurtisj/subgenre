@@ -28,11 +28,13 @@ app.controller('genresController', ['$scope',  '$resource', '_', function($scope
     $scope.groupedGenres = groupedGenres;
   }
 
-  Genre.query(function(results){
-    $scope.genres = results;
-    updateGenreGroups();
-    // console.log($scope.genres);
-  })
+  $scope.initHomepage = function(){
+    Genre.query(function(results){
+      $scope.genres = results;
+      updateGenreGroups();
+      // console.log($scope.genres);
+    })
+  }
 
   $scope.createGenre = function(){
     var genre = new Genre();

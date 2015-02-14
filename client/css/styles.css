@@ -15,3 +15,12 @@ h3{
 /*  float: left;
   min-width: 200px;*/
 }
+
+p.sub-head{
+
+}
+
+/*Forms*/
+form a.cancel{
+  padding-left: 10px;
+}

@@ -37,14 +37,15 @@ app.use(bodyParser());
 app.use('/js', express.static(__dirname + '/client/js'));
 app.use('/css', express.static(__dirname + '/client/css'));
 
-// Routes
+// App Routes
 app.get('/', function(req, res){
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
 
+app.get('/genres/:slug/add-subgenre', genresController.newSubGenre);
 app.get('/genres/:slug', genresController.show)
 
-// API
+// API Routes
 app.get('/api/genres', genresController.list)
 app.post('/api/genres', genresController.create)
 app.get('/api/genres/:slug', genresController.getGenreBySlug);
