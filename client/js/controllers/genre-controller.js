@@ -1,12 +1,10 @@
 app.controller('genreController', ['$scope', '$resource', '_', function($scope, $resource, _){
 
-  Genre = $resource('/api/genres/:genreName');
+  Genre = $resource('/api/genres/:slug');
 
-  $scope.init = function(genreName){
-    Genre.get({genreName: genreName}, function(genre){
-      $scope.parentGenre = genre.parentGenre
-      $scope.subGenres = genre.subGenres;
-      $scope.siblingGenres = genre.siblings;
+  $scope.init = function(slug){
+    Genre.get({slug: slug}, function(genre){
+      $scope.genre = genre;
     });
   }
 }]);

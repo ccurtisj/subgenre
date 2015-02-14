@@ -15,24 +15,33 @@ module.exports.create = function(req, res){
 }
 
 module.exports.show = function(req, res){
-  Genre.findOne({name: req.params.genreName}, function(err, response){
+  Genre
+    .findOne({slug: req.params.slug})
+    .populate('parentGenre')
+    .exec(function(err, response){
+
     if(err) return console.log(err);
     res.render('genre', {genre: response})
   });
 }
 
-module.exports.getGenreByName = function(req, res){
-  Genre.findOne({name: req.params.genreName}).populate('parentGenre').exec(function(err, genre){
+module.exports.getGenreBySlug = function(req, res){
+  Genre.findOne({slug: req.params.slug}).populate('parentGenre').exec(function(err, genre){
     if(err) return console.log(err);
+    if(genre){
+      // Find subgenres
+      genre.findSubGenres(function(subGenres){
+        genre.findSiblings(function(siblings){
+          var payload = genre.toJSON();
 
-    // Find subgenres
-    genre.findSubGenres(function(subGenres){
-      genre.findSiblings(function(siblings){
-        var payload = genre.toJSON();
-        payload.subGenres = subGenres;
-        payload.siblings = siblings;
-        res.json(payload);
+          payload.subGenres = subGenres;
+          payload.siblings = siblings;
+
+          res.json(payload);
+        });
       });
-    });
+    } else {
+      res.json("No genre found for " +req.params.slug)
+    }
   });
 }

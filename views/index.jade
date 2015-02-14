@@ -23,7 +23,7 @@ head
 
         ul
           li(ng-repeat='genreGroup in groupedGenres')
-            a(href='/genres/{{genreGroup.parentGenre.name}}') {{genreGroup.parentGenre.name}}
+            a(href='/genres/{{genreGroup.parentGenre.slug}}') {{genreGroup.parentGenre.name}}
             ul
               li(ng-repeat='subGenre in genreGroup.subGenres')
                 |{{subGenre.name}}

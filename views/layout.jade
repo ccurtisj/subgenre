@@ -1,0 +1,22 @@
+doctype html
+html(ng-app='subgenreApp')
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  title Subgenre
+  meta(name='description', content='')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  // <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  // Place favicon.ico in the root directory
+  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.js')
+  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-resource.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js')
+  script(src='/js/app.js')
+  link(rel='stylesheet', type='text/css', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+  link(rel='stylesheet', type='text/css', href='/css/styles.css')
+
+  block head
+
+body
+  .container
+    block content

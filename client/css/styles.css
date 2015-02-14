@@ -1,3 +1,17 @@
-body{
+.container{
+  margin-top:30px;
+}
 
+/* Typography */
+h3{
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #555;
+  font-weight: 300;
+}
+
+/* Layout */
+.genre-list li{
+/*  float: left;
+  min-width: 200px;*/
 }

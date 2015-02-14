@@ -3,7 +3,8 @@ var mongoose = require('mongoose'),
 
 var genreSchema = new Schema({
   parentGenre : { type: Schema.Types.ObjectId, ref: 'Genre' },
-  name : String
+  name : String,
+  slug: String
 })
 
 genreSchema.methods.findSubGenres = function(next){
@@ -22,6 +23,15 @@ genreSchema.methods.findSiblings = function(next){
       if(err) return console.log(err);
         next(siblings);
   });
+}
+
+genreSchema.pre('save', function(next){
+  this.slug = this.generateSlug();
+  next();
+});
+
+genreSchema.methods.generateSlug = function(){
+  return this.name.toLowerCase().replace(/\s+/, '-')
 }
 
 module.exports = mongoose.model('Genre', genreSchema);
