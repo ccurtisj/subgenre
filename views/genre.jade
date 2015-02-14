@@ -35,5 +35,5 @@ block content
       .col-md-6
         h3 Related Genres
         ul.list-unstyled.genre-list
-          li(ng-repeat="genre in siblingGenres")
-            a(href='/genres/{{genre.name}}') {{genre.name}}
+          li(ng-repeat="genre in genre.siblings")
+            a(href='/genres/{{genre.slug}}') {{genre.name}}
