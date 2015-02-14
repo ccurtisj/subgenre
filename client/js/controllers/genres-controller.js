@@ -5,14 +5,14 @@ app.controller('genresController', ['$scope',  '$resource', '_', function($scope
   var updateGenreGroups = function(){
     var groupedGenres = _.reduce($scope.genres, function(memo, genre){
 
-      var genreLabel = null
+      var genreId = null
       if(typeof(genre.parentGenre) == 'undefined'){
-        genreLabel = genre.name;
+        genreId = genre._id;
       } else{
-        genreLabel = genre.parentGenre;
+        genreId = genre.parentGenre;
       };
 
-      var genreHash = memo[genreLabel] || { label: genreLabel, subGenres: [] }
+      var genreHash = memo[genreId] || { label: genreId, subGenres: [] }
 
       if(typeof(genre.parentGenre) == 'undefined'){
         genreHash.parentGenre = genre
@@ -20,7 +20,7 @@ app.controller('genresController', ['$scope',  '$resource', '_', function($scope
         genreHash.subGenres.push(genre)
       }
 
-      memo[genreLabel] = genreHash;
+      memo[genreId] = genreHash;
       return memo;
     }, {});
 
