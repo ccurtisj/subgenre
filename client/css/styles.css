@@ -5,9 +5,10 @@
 /* Typography */
 h3{
   text-transform: uppercase;
-  font-size: 20px;
+  /*font-size: 20px;*/
+  font-size:16px;
   color: #939393;
-  font-weight: 300;
+  /*font-weight: 300;*/
 }
 
 /* Layout */
@@ -15,9 +16,9 @@ h1{
   text-transform: uppercase;
   font-size:60px;
 }
-.genre-list li{
-/*  float: left;
-  min-width: 200px;*/
+
+#header.row{
+  margin-bottom: 30px;
 }
 
 p.sub-head{
@@ -26,11 +27,46 @@ p.sub-head{
 
 /*Forms*/
 form a.cancel{
-  /*padding-left: 10px;*/
+  padding-left: 10px;
+}
+
+form.definition-new{
+  width:400px;
 }
 
 form .btn.btn-primary{
-  float: right;
+}
+
+/* Generes SHOW */
+
+.genre-list{
+  margin-bottom: 35px;
+}
+
+.genre-list li{
+  float: left;
+  margin-right: 5px;
+}
+
+.genre-list li i.fa{
+  font-size: 8px;
+  position: relative;
+  top: -2px;
+  margin: 0 4px 0 10px;
+  opacity: 0.75;
+}
+
+.genre-list li:last-of-type i.fa{
+  display:none;
+}
+
+.add-subgenre.btn{
+  display:inline-block;
+  margin-top: 4px;
+}
+
+.genre .row{
+  margin-bottom: 50px;
 }
 
 .definition {
@@ -43,14 +79,19 @@ form .btn.btn-primary{
   background-color:#DDD;
 }
 
+.definition.definition-top i.fa-quote-left{
+  opacity: 1;
+}
+
 .definition .body, .definition .examples{
   font-size: 18px;
 }
 
-.definition .body  i.fa{
+.definition i.fa-quote-left{
   font-size: 36px;
   margin-left: -44px;
   margin-right: 10px;
+  opacity: 0.25;
 }
 
 .definition .examples{
@@ -62,9 +103,8 @@ form .btn.btn-primary{
 }
 
 .add-definition .lead{
-  font-weight: bold;
+  margin-bottom: 10px;
 }
-
 .add-definition .lead .btn{
-  margin-left:15px;
+  margin-left:5px;
 }

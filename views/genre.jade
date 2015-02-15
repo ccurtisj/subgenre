@@ -4,25 +4,20 @@ block head
   script(src='/js/controllers/genre-controller.js')
 
 block content
-  div(ng-controller='genreController' ng-init="init('#{genre.slug}')")
-    .row
+  .genre(ng-controller='genreController' ng-init="init('#{genre.slug}')")
+    .row#header
       .col-md-12
         h1= genre.name
         p.sub-head
           if genre.parentGenre
-            |A#{' '}
-            a(href='/genres/#{genre.parentGenre.slug}') #{genre.parentGenre.name}
-            |  subgenre
-
-        h3 Subgenres
-        ul.list-unstyled.genre-list
-          li(ng-repeat="subgenre in genre.subGenres")
-            a(href='/genres/{{subgenre.slug}}') {{subgenre.name}}
-        a.btn.btn-default(href="/genres/{{genre.slug}}/add-subgenre")
-          | Add a <b>#{genre.name}</b> Subgenre
+            |A Subgenre of#{' '}
+            a(href='/genres/#{genre.parentGenre.slug}')
+              b #{genre.parentGenre.name}
+            |  music
 
     .row
       .col-md-8
+        h3 Top Definition
         .definition.definition-top(ng-if="genre.definitions[0]")
           p.body
             i.fa.fa-quote-left
@@ -32,25 +27,48 @@ block content
             {{genre.definitions[0].createdAt | date : shortDate}}
 
         .add-definition(ng-hide="showForm")
-          p.lead
-            | Got a better "#{genre.name}" definition?#{' '}
-            btn.btn.btn-lg.btn-primary(ng-click="showForm = true") Add Your Own Definition
+          .lead(ng-show="genre.definitions.length > 0")
+            p
+              | Got a better definition?#{' '}
+              btn.btn.btn-primary(ng-click="showForm = true") Add Your Own Definition
 
-    .row
-      .col-md-6
+          div(ng-show="genre.definitions.length == 0")
+            p Do you know what {{genre.name}} sounds like? Enlighten us!
+            btn.btn.btn-primary(ng-click="showForm = true") Add Your Definition
+
         form.definition-new(ng-submit="createDefinition()" ng-show="showForm")
-          .input-group
+          p.input-group
             label(for="definition-body") Enter your definition of "#{genre.name}" here
             textarea.form-control(name="definition-name" ng-model="newDefinition.body")
-          .input-group
+          p.input-group
             label(for="definition-examples") Can you name a few example artists?
             input.form-control(type="text" name="definition-name" placeholder="ex: Prince, Sting, The Pizza Underground" ng-model="newDefinition.examples")
           br
-          a.cancel(href="#" ng-click="showForm = false; $event.preventDefault()") Nevermind
-          button.btn.btn-primary(type="submit") Create
+          button.btn.btn-primary(type="submit") Save
+          a.cancel(href="#" ng-click="clearAndCloseForm(); $event.preventDefault()") Cancel
 
     .row
       .col-md-8
+        .row
+          .col-md-6
+            h3 Subgenres
+            ul.list-unstyled.genre-list(ng-show="genre.subGenres")
+              li(ng-repeat="subgenre in genre.subGenres")
+                a(href='/genres/{{subgenre.slug}}') {{subgenre.name}}
+                i.fa.fa-circle
+            a.add-subgenre.btn.btn-default(href="/genres/{{genre.slug}}/add-subgenre")
+              | Add a <b>#{genre.name}</b> Subgenre
+
+          .col-md-6(ng-if="genre.siblings.length > 1")
+            h3 Related Genres
+            ul.list-unstyled.genre-list
+              li(ng-repeat="genre in genre.siblings")
+                a(href='/genres/{{genre.slug}}') {{genre.name}}
+                i.fa.fa-circle
+
+    .row(ng-if="genre.definitions.length > 1")
+      .col-md-8
+        hr/
         h3 Additional definitions
         .definition(ng-repeat="definition in genre.definitions.slice(1)")
           p.body
@@ -59,10 +77,3 @@ block content
           p.examples(ng-if="definition.examples") Example artists: {{definition.examples}}
           .byline.text-muted
             {{definition.createdAt | date : shortDate}}
-
-    .row
-      .col-md-6
-        h3 Related Genres
-        ul.list-unstyled.genre-list
-          li(ng-repeat="genre in genre.siblings")
-            a(href='/genres/{{genre.slug}}') {{genre.name}}
