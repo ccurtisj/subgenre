@@ -5,22 +5,66 @@
 /* Typography */
 h3{
   text-transform: uppercase;
-  font-size: 13px;
-  color: #555;
+  font-size: 20px;
+  color: #939393;
   font-weight: 300;
 }
 
 /* Layout */
+h1{
+  text-transform: uppercase;
+  font-size:60px;
+}
 .genre-list li{
 /*  float: left;
   min-width: 200px;*/
 }
 
 p.sub-head{
-
+  font-style: italic
 }
 
 /*Forms*/
 form a.cancel{
-  padding-left: 10px;
+  /*padding-left: 10px;*/
+}
+
+form .btn.btn-primary{
+  float: right;
+}
+
+.definition {
+  background-color: rgba(234, 234, 234, 0.5);
+  margin: 25px 0 30px;
+  padding: 20px 30px 32px;
+}
+
+.definition.definition-top{
+  background-color:#DDD;
+}
+
+.definition .body, .definition .examples{
+  font-size: 18px;
+}
+
+.definition .body  i.fa{
+  font-size: 36px;
+  margin-left: -44px;
+  margin-right: 10px;
+}
+
+.definition .examples{
+  font-style: italic;
+}
+
+.definition .byline{
+  text-align: right;
+}
+
+.add-definition .lead{
+  font-weight: bold;
+}
+
+.add-definition .lead .btn{
+  margin-left:15px;
 }

@@ -7,18 +7,13 @@ block content
   div(ng-controller='genreController' ng-init="init('#{genre.slug}')")
     .row
       .col-md-12
+        h1= genre.name
         p.sub-head
           if genre.parentGenre
             |A#{' '}
             a(href='/genres/#{genre.parentGenre.slug}') #{genre.parentGenre.name}
             |  subgenre
-          else
-            |A top-level genre
 
-        h1= genre.name
-
-    .row
-      .col-md-6
         h3 Subgenres
         ul.list-unstyled.genre-list
           li(ng-repeat="subgenre in genre.subGenres")
@@ -27,9 +22,43 @@ block content
           | Add a <b>#{genre.name}</b> Subgenre
 
     .row
+      .col-md-8
+        .definition.definition-top(ng-if="genre.definitions[0]")
+          p.body
+            i.fa.fa-quote-left
+            | {{genre.definitions[0].body}}
+          p.examples(ng-if="definition.examples") Example artists: {{genre.definitions[0].examples}}
+          .byline.text-muted
+            {{genre.definitions[0].createdAt | date : shortDate}}
+
+        .add-definition(ng-hide="showForm")
+          p.lead
+            | Got a better "#{genre.name}" definition?#{' '}
+            btn.btn.btn-lg.btn-primary(ng-click="showForm = true") Add Your Own Definition
+
+    .row
       .col-md-6
-        h3 Definition
-        p Punk rock (or simply punk) is a rock music genre that developed between 1969 and 1976 in the United States, United Kingdom, and Australia. Rooted in garage rock and other forms of what is now known as protopunk music, punk rock bands eschewed perceived excesses of mainstream 1970s rock. Punk bands typically use short or fast-paced songs, with hard-edged melodies and singing styles, stripped-down instrumentation, and often political, anti-establishment lyrics. Punk embraces a DIY ethic; many bands self-produced recordings and distributed them through informal channels.
+        form.definition-new(ng-submit="createDefinition()" ng-show="showForm")
+          .input-group
+            label(for="definition-body") Enter your definition of "#{genre.name}" here
+            textarea.form-control(name="definition-name" ng-model="newDefinition.body")
+          .input-group
+            label(for="definition-examples") Can you name a few example artists?
+            input.form-control(type="text" name="definition-name" placeholder="ex: Prince, Sting, The Pizza Underground" ng-model="newDefinition.examples")
+          br
+          a.cancel(href="#" ng-click="showForm = false; $event.preventDefault()") Nevermind
+          button.btn.btn-primary(type="submit") Create
+
+    .row
+      .col-md-8
+        h3 Additional definitions
+        .definition(ng-repeat="definition in genre.definitions.slice(1)")
+          p.body
+            i.fa.fa-quote-left
+            | {{definition.body}}
+          p.examples(ng-if="definition.examples") Example artists: {{definition.examples}}
+          .byline.text-muted
+            {{definition.createdAt | date : shortDate}}
 
     .row
       .col-md-6

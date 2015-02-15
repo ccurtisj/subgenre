@@ -2,7 +2,8 @@ var express           = require('express'),
     app               = express(),
     bodyParser        = require('body-parser'),
     mongoose          = require('mongoose'),
-    genresController  = require('./api/controllers/genres-controller');
+    genresController  = require('./api/controllers/genres-controller'),
+    definitionsController  = require('./api/controllers/definitions-controller');
 
 // Here we find an appropriate database to connect to, defaulting to
 // localhost if we don't find one.
@@ -49,4 +50,7 @@ app.get('/genres/:slug', genresController.show)
 app.get('/api/genres', genresController.list)
 app.post('/api/genres', genresController.create)
 app.get('/api/genres/:slug', genresController.getGenreBySlug);
+
+app.get('/api/genres/:genre_slug/definitions', definitionsController.list)
+app.post('/api/genres/:genre_slug/definitions', definitionsController.create)
 
