@@ -76,7 +76,7 @@ form .btn.btn-primary{
 }
 
 .definition.definition-top{
-  background-color:#DDD;
+  /*background-color:#DDD;*/
 }
 
 .definition.definition-top i.fa-quote-left{
@@ -94,8 +94,12 @@ form .btn.btn-primary{
   opacity: 0.25;
 }
 
-.definition .examples{
-  font-style: italic;
+.definition .errata,  .definition blockquote{
+  font-size:16px;
+}
+
+.definition blockquote{
+  border-left-color:#DADADA;
 }
 
 .definition .byline{

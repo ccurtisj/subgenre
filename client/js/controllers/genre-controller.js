@@ -9,6 +9,7 @@ app.controller('genreController', ['$scope', '$resource', '_', function($scope, 
 
       Definition.query({slug: genre.slug}, function(definitions){
         $scope.genre.definitions = definitions;
+        $scope.topDefinition = definitions[0];
       });
     });
   };
@@ -34,6 +35,7 @@ app.controller('genreController', ['$scope', '$resource', '_', function($scope, 
 
     definition.$save({slug: $scope.genre._id}, function(result){
       $scope.genre.definitions.unshift(definition);
+      $scope.topDefinition = definition;
       $scope.clearAndCloseForm();
     });
   };

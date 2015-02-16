@@ -5,7 +5,8 @@ var mongoose    = require('mongoose'),
 var DefinitionSchema = new Schema({
   genre : { type: Schema.Types.ObjectId, ref: 'Genre' },
   body : String,
-  examples : String
+  examples : String,
+  alternatives: String
 });
 
 DefinitionSchema.plugin(timestamps);
