@@ -69,6 +69,7 @@ block content
     .row(ng-if="genre.definitions.length > 1")
       .col-md-8
         hr/
+        br/
         h3 Additional definitions
         .definition(ng-repeat="definition in genre.definitions.slice(1)")
           p.body
