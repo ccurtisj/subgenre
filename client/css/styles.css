@@ -112,3 +112,37 @@ form .btn.btn-primary{
 .add-definition .lead .btn{
   margin-left:5px;
 }
+
+/* Autocomplete */
+
+.twitter-typeahead{
+  width: 100%;
+}
+
+.tt-dropdown-menu{
+  background: white;
+  border: solid 1px #ccc;
+  /*padding: 5px;*/
+}
+
+.tt-dropdown-menu .tt-suggestion, .tt-dropdown-menu .footer{
+  padding: 8px 20px;
+}
+
+.tt-dropdown-menu .footer{
+  font-style: italic;
+}
+
+.tt-dropdown-menu .footer a{
+  font-weight: bold;
+}
+
+.tt-dropdown-menu .tt-suggestion b{
+  /*color:;*/
+}
+
+.tt-dropdown-menu .tt-suggestion.tt-cursor{
+  background-color: #666;
+  color: white;
+  cursor: pointer;
+}

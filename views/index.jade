@@ -1,10 +1,12 @@
 extends layout
 
 block head
-  script(src='/js/controllers/genres-controller.js')
+  script(src='/js/typeahead.jquery.js')
+  script(src='/js/controllers/home-controller.js')
+
 
 block content
-  div(ng-controller='genresController' ng-init="initHomepage()")
+  div(ng-controller='homeController' ng-init="initHomepage()")
     .row
       .col-md-12.center
         h1 Subgenre
@@ -14,27 +16,44 @@ block content
       .col-md-12.center
         form(ng-submit)
           .form-group
-            input.form-control(type="text" placeholder="Search for a Subenre like \"Bro Step\" or \"Cat Rock\"")
+            input.typeahead.form-control(type="text" placeholder="Search for a Subgenre like \"Bro Step\" or \"Cat Rock\"" ng-model="searchQuery")
 
     .row
       .col-md-8
+        h2 Genres
         ul
-          li(ng-repeat='genreGroup in groupedGenres')
-            a(href='/genres/{{genreGroup.parentGenre.slug}}') {{genreGroup.parentGenre.name}}
-            ul
-              li(ng-repeat='subGenre in genreGroup.subGenres')
-                |{{subGenre.name}}
+          li(ng-repeat='genre in parentGenres')
+            a(href='/genres/{{genre.slug}}') {{genre.name}}
 
       .col-md-4
         .panel
-          h4 Add Supergenre (Admin only)
+          //- h4 Add Supergenre (Admin only)
 
-          form(ng-submit='createGenre()')
-            select(ng-model='parentGenre')
-              option
-              option(ng-repeat='genre in genres', value='{{genre._id}}') {{genre.name}}
+          //- form(ng-submit='createGenre()')
+          //-   select(ng-model='parentGenre')
+          //-     option
+          //-     option(ng-repeat='genre in genres', value='{{genre._id}}') {{genre.name}}
 
-            br
+          //-   br
 
-            input(type='text', placeholder='Name', ng-model='genreName')
-            button(type='submit') Add Genre
+          //-   input(type='text', placeholder='Name', ng-model='genreName')
+          //-   button(type='submit') Add Genre
+
+    #genre-form.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-body
+            form(ng-submit='createSubGenre()')
+              .form-group
+                label(for="name") What is the name of this Subgenre?
+                input.form-control(type="text" name="name" ng-model="newGenre.name")
+                p.help-block Skip the punctuation please (ex: Ska Punk over Ska-Punk)
+
+              .form-group
+                label(for="parent-genre") Pick a parent genre
+                select(name="parent-genre" ng-model="newGenre.parentGenre")
+                  option(ng-repeat="genre in parentGenres" value="{{genre._id}}") {{genre.name}}
+
+
+              button.btn.btn-primary(type="submit") Save
+              a.cancel(href='/') Cancel

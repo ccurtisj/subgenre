@@ -38,6 +38,11 @@ app.use(bodyParser());
 app.use('/js', express.static(__dirname + '/client/js'));
 app.use('/css', express.static(__dirname + '/client/css'));
 
+// Server templates
+app.get('/templates/:templateName.:ext', function(req,res){
+  res.render(__dirname + '/client/templates/' + req.params.templateName)
+});
+
 // App Routes
 app.get('/', function(req, res){
   res.render('index', { title: 'Hey', message: 'Hello there!'});

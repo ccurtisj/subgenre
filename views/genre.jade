@@ -25,8 +25,7 @@ block content
           .errata
             blockquote.text-muted(ng-if="topDefinition.examples") Example artists: {{topDefinition.examples}}
             p.text-muted(ng-if="topDefinition.alternatives") Also called: {{topDefinition.alternatives}}
-          .byline.text-muted
-            {{topDefinition.createdAt | date : shortDate}}
+          .byline.text-muted {{topDefinition.createdAt | date : shortDate}}
 
         .add-definition(ng-hide="showForm")
           .lead(ng-show="genre.definitions.length > 0")
@@ -65,7 +64,7 @@ block content
             a.add-subgenre.btn.btn-default(href="/genres/{{genre.slug}}/add-subgenre")
               | Add a <b>#{genre.name}</b> Subgenre
 
-          .col-md-6(ng-if="genre.siblings.length > 1")
+          .col-md-6(ng-if="genre.siblings.length > 0")
             h3 Related Genres
             ul.list-unstyled.genre-list
               li(ng-repeat="genre in genre.siblings")
@@ -84,5 +83,4 @@ block content
           .errata
             blockquote.text-muted(ng-if="definition.examples") Example artists: {{definition.examples}}
             p.text-muted(ng-if="definition.alternatives") Also called: {{definition.alternatives}}
-          .byline.text-muted
-            {{definition.createdAt | date : shortDate}}
+          .byline.text-muted {{definition.createdAt | date : shortDate}}

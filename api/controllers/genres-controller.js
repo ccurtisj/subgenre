@@ -1,7 +1,12 @@
 var Genre = require('../models/genre');
 
 module.exports.list = function(req, res){
-  Genre.find({}, function(err, results){
+  var query = {}
+  if(req.query.root == "true"){
+    query.parentGenre = null;
+  }
+
+  Genre.find(query, function(err, results){
     res.json(results)
   });
 };

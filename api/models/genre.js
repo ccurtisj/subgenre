@@ -17,8 +17,11 @@ genreSchema.methods.findSubGenres = function(next){
 }
 
 genreSchema.methods.findSiblings = function(next){
+  if(this.parentGenre == null) { return next([]); }
+
   return this.model('Genre')
-    .find({parentGenre: this.parentGenre})
+    .where('parentGenre').equals(this.parentGenre)
+    .where('_id').ne(this._id)
     .exec(function(err, siblings){
       if(err) return console.log(err);
         next(siblings);
