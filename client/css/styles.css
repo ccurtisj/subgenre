@@ -13,14 +13,6 @@ h3{
   /*font-weight: 300;*/
 }
 
-/* Layout */
-body{
-  background: black url('/images/background.jpg') top center no-repeat;
-  color: #D9D9D9;
-  font: 18px/32px 'Roboto Slab', serif;
-
-}
-
 h1, h2, h3{
   font-family: 'Oswald', sans-serif;
 }
@@ -32,6 +24,19 @@ h1{
 h2{
   font-size: 22px;
   color: #8C8C8C;
+}
+
+a:hover{
+  text-decoration: none;
+  border-bottom: solid 1px;
+}
+
+/* Layout */
+body{
+  background: black url('/images/background.jpg') top center no-repeat;
+  color: #D9D9D9;
+  font: 18px/32px 'Roboto Slab', serif;
+
 }
 
 .center{
@@ -143,6 +148,7 @@ form .btn.btn-primary{
 .tt-dropdown-menu{
   background: white;
   border: solid 1px #ccc;
+  color: black;
   /*padding: 5px;*/
 }
 
@@ -151,7 +157,7 @@ form .btn.btn-primary{
 }
 
 .tt-dropdown-menu .footer{
-  font-style: italic;
+  /*font-style: italic;*/
 }
 
 .tt-dropdown-menu .footer a{
@@ -166,6 +172,10 @@ form .btn.btn-primary{
   background-color: #666;
   color: white;
   cursor: pointer;
+}
+
+h1 img{
+  margin-top: 35px;
 }
 
 .homepage-search input{
