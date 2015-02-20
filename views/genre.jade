@@ -8,30 +8,40 @@ block content
     .row#header
       .col-md-12
         h1= genre.name
-        p.sub-head
+        h2
           if genre.parentGenre
-            |A Subgenre of#{' '}
+            |a subgenre of#{' '}
             a(href='/genres/#{genre.parentGenre.slug}')
               b #{genre.parentGenre.name}
             |  music
 
     .row
-      .col-md-8
-        h3 Top Definition
+      .col-md-12
         .definition.definition-top(ng-if="topDefinition")
+          .header
+            .votes
+              span 34
+              |  votes
+            .top-definition
+              i.fa.fa-star
+              |  Top Definition
+            .posted.text-muted Posted {{topDefinition.createdAt | date : shortDate}}
           p.body
             i.fa.fa-quote-left
             | {{genre.definitions[0].body}}
           .errata
-            blockquote.text-muted(ng-if="topDefinition.examples") Example artists: {{topDefinition.examples}}
-            p.text-muted(ng-if="topDefinition.alternatives") Also called: {{topDefinition.alternatives}}
-          .byline.text-muted {{topDefinition.createdAt | date : shortDate}}
+            div(ng-if="topDefinition.examples")
+              strong Example artists:
+              |  {{topDefinition.examples}}
+            div(ng-if="topDefinition.alternatives")
+              strong Also called:
+              |  {{topDefinition.alternatives}}
 
         .add-definition(ng-hide="showForm")
           .lead(ng-show="genre.definitions.length > 0")
             p
               | Got a better definition?#{' '}
-              btn.btn.btn-primary(ng-click="showForm = true") Add Your Own Definition
+              btn.btn.btn-primary.btn-lg(ng-click="showForm = true") Add Your Definition
 
           div(ng-show="genre.definitions.length == 0")
             p Do you know what {{genre.name}} sounds like? Enlighten us!
@@ -53,10 +63,12 @@ block content
           a.cancel(href="#" ng-click="clearAndCloseForm(); $event.preventDefault()") Cancel
 
     .row
-      .col-md-8
+      .col-md-12
         .row
           .col-md-6
-            h3 Subgenres
+            h3
+              | {{genre.name}}
+              strong  Subgenres
             ul.list-unstyled.genre-list(ng-show="genre.subGenres")
               li(ng-repeat="subgenre in genre.subGenres")
                 a(href='/genres/{{subgenre.slug}}') {{subgenre.name}}

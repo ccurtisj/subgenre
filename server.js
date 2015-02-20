@@ -46,7 +46,7 @@ app.get('/templates/:templateName.:ext', function(req,res){
 
 // App Routes
 app.get('/', function(req, res){
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
+  res.render('index', { controller: 'home'});
 });
 
 app.get('/genres/:slug/add-subgenre', genresController.newSubGenre);
