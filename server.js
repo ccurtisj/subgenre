@@ -37,6 +37,7 @@ app.set('view engine', 'jade');
 app.use(bodyParser());
 app.use('/js', express.static(__dirname + '/client/js'));
 app.use('/css', express.static(__dirname + '/client/css'));
+app.use('/images', express.static(__dirname + '/client/images'));
 
 // Server templates
 app.get('/templates/:templateName.:ext', function(req,res){

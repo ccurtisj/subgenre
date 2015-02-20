@@ -9,24 +9,27 @@ block content
   div(ng-controller='homeController' ng-init="initHomepage()")
     .row
       .col-md-12.center
-        h1 Subgenre
-        p.lead Defining the world's musicial oddities
+        h1
+          img(src="/images/genreist-homepage-logo.png" alt="Genreist - Be A Know-it-all" title="Genreist - Be A Know-it-all")
 
     .row
       .col-md-12.center
-        form(ng-submit)
+        form.homepage-search(ng-submit)
           .form-group
-            input.typeahead.form-control(type="text" placeholder="Search for a Subgenre like \"Bro Step\" or \"Cat Rock\"" ng-model="searchQuery")
+            input.typeahead.form-control(type="text" placeholder="Learn about a music genre like \"Bro Step\" or \"Cat Rock\"" ng-model="searchQuery")
 
-    .row
-      .col-md-8
-        h2 Genres
+    .row.after-search
+      .col-sm-6.col-md-4
+        h2 So What's All This, Then?
+        p Think Wikipedia for music genres, then crank it up to 11.
+      .col-sm-6.col-md-8
+        h2 Explore Genres
         ul
           li(ng-repeat='genre in parentGenres')
             a(href='/genres/{{genre.slug}}') {{genre.name}}
 
-      .col-md-4
-        .panel
+      //- .col-md-4
+      //-   .panel
           //- h4 Add Supergenre (Admin only)
 
           //- form(ng-submit='createGenre()')
