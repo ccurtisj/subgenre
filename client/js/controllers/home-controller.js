@@ -43,7 +43,7 @@ app.controller('homeController', ['$scope',  '$resource', '_', function($scope, 
         source: typeaheadDataSource,
         templates: {
           empty: function(context){
-            return '<div class="footer">We haven\'t seen "' + context.query + '" before. <a data-toggle="modal" href="#genre-form">Why don\'t you Add it?</a></div>'
+            return '<div class="footer">We haven\'t seen <strong>"' + context.query + '"</strong> before. <a data-toggle="modal" href="#genre-form">Why don\'t you Add it?</a></div>'
           },
           suggestion: function(genre){
             return genre.name;
