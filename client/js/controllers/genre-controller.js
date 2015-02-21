@@ -10,6 +10,7 @@ app.controller('genreController', ['$scope', '$resource', '_', function($scope, 
       Definition.query({slug: genre.slug}, function(definitions){
         $scope.genre.definitions = definitions;
         $scope.topDefinition = definitions[0];
+        $scope.topDefinition.isTopDefinition = true
       });
     });
   };

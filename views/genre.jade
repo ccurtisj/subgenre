@@ -2,6 +2,7 @@ extends layout
 
 block head
   script(src='/js/controllers/genre-controller.js')
+  script(src='/js/directives/ng-definition-directive.js')
 
 block content
   .genre(ng-controller='genreController' ng-init="init('#{genre.slug}')")
@@ -17,25 +18,7 @@ block content
 
     .row
       .col-md-12
-        .definition.definition-top(ng-if="topDefinition")
-          .header
-            .votes
-              span 34
-              |  votes
-            .top-definition
-              i.fa.fa-star
-              |  Top Definition
-            .posted.text-muted Posted {{topDefinition.createdAt | date : shortDate}}
-          p.body
-            i.fa.fa-quote-left
-            | {{genre.definitions[0].body}}
-          .errata
-            div(ng-if="topDefinition.examples")
-              strong Example artists:
-              |  {{topDefinition.examples}}
-            div(ng-if="topDefinition.alternatives")
-              strong Also called:
-              |  {{topDefinition.alternatives}}
+        ng-definition(definition="topDefinition")
 
         .add-definition(ng-hide="showForm")
           .lead(ng-show="genre.definitions.length > 0")
@@ -82,15 +65,8 @@ block content
                 i.fa.fa-circle
 
     .row(ng-if="genre.definitions.length > 1")
-      .col-md-8
+      .col-md-12
         hr/
         br/
         h3 Additional definitions
-        .definition(ng-repeat="definition in genre.definitions.slice(1)")
-          p.body
-            i.fa.fa-quote-left
-            | {{definition.body}}
-          .errata
-            blockquote.text-muted(ng-if="definition.examples") Example artists: {{definition.examples}}
-            p.text-muted(ng-if="definition.alternatives") Also called: {{definition.alternatives}}
-          .byline.text-muted {{definition.createdAt | date : shortDate}}
+        ng-definition(ng-repeat="definition in genre.definitions.slice(1)" definition="definition")

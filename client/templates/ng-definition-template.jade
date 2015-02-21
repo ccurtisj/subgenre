@@ -1,0 +1,19 @@
+.definition
+  .header
+    .votes
+      span 34
+      |  votes
+    .top-definition(ng-if="definition.isTopDefinition")
+      i.fa.fa-star
+      |  Top Definition
+    .posted.text-muted Posted {{definition.createdAt | date : shortDate}}
+  p.body
+    i.fa.fa-quote-left
+    | {{definition.body}}
+  .errata(ng-if="definition.examples||definition.alternatives")
+    div(ng-if="definition.examples")
+      strong Example artists:
+      |  {{definition.examples}}
+    div(ng-if="definition.alternatives")
+      strong Also called:
+      |  {{definition.alternatives}}
