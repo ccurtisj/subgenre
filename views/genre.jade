@@ -43,24 +43,22 @@ block content
               | Got a better definition?#{' '}
               btn.btn.btn-primary.btn-lg(ng-click="showForm = true") Add Your Definition
 
-          div(ng-show="genre.definitions.length == 0")
-            p Do you know what {{genre.name}} sounds like? Enlighten us!
-            btn.btn.btn-primary(ng-click="showForm = true") Add Your Definition
-
-        form.definition-new(ng-submit="createDefinition()" ng-show="showForm")
+        form.definition-new(ng-submit="createDefinition()" ng-show="genre.definitions.length == 0 || showForm")
+          p
+            i Show the world how cool and knowledgable you are by telling us all about {{genre.name}}.
           p.input-group
-            label(for="definition-body") Enter your definition of "#{genre.name}" here
+            label.label-lg(for="definition-body") What does #{genre.name} sound like?
             textarea.form-control(name="definition-name" ng-model="newDefinition.body")
           p.input-group
-            label(for="definition-examples") Can you name a few example artists?
+            label(for="definition-examples") Which artists play {{genre.name}}?
             input.form-control(type="text" name="definition-examples" placeholder="ex: Prince, Sting, The Pizza Underground" ng-model="newDefinition.examples")
 
           p.input-group
-            label(for="definition-alternatives") Does {{genre.name || 'this subgenre'}} have any nicknames?
+            label(for="definition-alternatives") Does {{genre.name}} have any nicknames?
             input.form-control(type="text" name="definition-alternatives" placeholder="ex: Drone metal, Drone Doom, Power Ambient" ng-model="newDefinition.alternatives")
-          br
-          button.btn.btn-primary(type="submit") Save
-          a.cancel(href="#" ng-click="clearAndCloseForm(); $event.preventDefault()") Cancel
+          .controls
+            a.cancel(href="#" ng-click="clearAndCloseForm(); $event.preventDefault()" ng-if="genre.definitions.length > 0") Cancel
+            button.btn.btn-primary.btn-lg(type="submit") Add Definition
 
     .row
       .col-md-12

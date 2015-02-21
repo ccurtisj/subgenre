@@ -28,25 +28,11 @@ block content
           li(ng-repeat='genre in parentGenres')
             a(href='/genres/{{genre.slug}}') {{genre.name}}
 
-      //- .col-md-4
-      //-   .panel
-          //- h4 Add Supergenre (Admin only)
-
-          //- form(ng-submit='createGenre()')
-          //-   select(ng-model='parentGenre')
-          //-     option
-          //-     option(ng-repeat='genre in genres', value='{{genre._id}}') {{genre.name}}
-
-          //-   br
-
-          //-   input(type='text', placeholder='Name', ng-model='genreName')
-          //-   button(type='submit') Add Genre
-
     #genre-form.modal.fade
       .modal-dialog
         .modal-content
           .modal-body
-            h4 Add a Genre
+            h4 Add a new genre
             form(ng-submit='createSubGenre()')
               .form-group
                 label(for="name") What is the name of this Subgenre?
@@ -60,4 +46,6 @@ block content
 
               .controls
                 a.cancel(href='/') Cancel
-                button.btn.btn-primary.btn-lg(type="submit") Save
+                button.btn.btn-primary.btn-lg(type="submit")
+                  | Next#{' '}
+                  i.fa.fa-chevron-right

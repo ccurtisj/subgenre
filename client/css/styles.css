@@ -78,7 +78,7 @@ nav img{
 }
 
 /*Forms*/
-.modal form{
+form{
   overflow:hidden;
 }
 
@@ -89,7 +89,11 @@ form a.cancel{
 }
 
 form.definition-new{
-  width:400px;
+
+}
+
+label.label-lg{
+  font-size: 22px;
 }
 
 form .btn.btn-primary{
@@ -99,9 +103,18 @@ form select{
   display: block;
 }
 
+form textarea.form-control{
+  height: 225px;
+}
+
 .form-control{
   font-size: 22px;
   padding: 24px 18px;
+}
+
+.input-group{
+  margin-bottom:20px;
+  width : 100%;
 }
 
 form .controls{
@@ -141,7 +154,7 @@ form .controls{
   margin-bottom: 40px;
 }
 
-.definition {
+.definition, .definition-new {
   background-color: rgba(244, 244, 244, 0.96);
   color:#333;
   margin: 25px 0 30px;
@@ -256,6 +269,10 @@ form .controls{
 
 h1 img{
   margin-top: 35px;
+}
+
+.homepage-search{
+  overflow:visible;
 }
 
 .homepage-search input{
