@@ -50,9 +50,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new TwitterStrategy({
-    consumerKey: 'TXVvRjV0NhXEnXXtMjRpMSNfj',// TWITTER_CONSUMER_KEY,
-    consumerSecret: 'cKInwU1vO8ufFySEVbJuWoTYcx0SJbnGjygtANS930RIW9EwoV', // TWITTER_CONSUMER_SECRET,
-    callbackURL: "http://localhost:3000/auth/twitter/callback"
+    consumerKey: process.env.TWITTER_CONSUMER_KEY || 'TXVvRjV0NhXEnXXtMjRpMSNfj',// TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.TWITTER_CONSUMER_SECRET || 'cKInwU1vO8ufFySEVbJuWoTYcx0SJbnGjygtANS930RIW9EwoV', // TWITTER_CONSUMER_SECRET,
+    callbackURL: process.env.TWITTER_CALLBACK_URL || "http://localhost:3000/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
     User.findOne({twitter_id: profile.id}, function(err, user){
