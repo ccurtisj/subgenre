@@ -45,7 +45,11 @@ nav a:hover{
 
 /* Layout */
 body{
-  background: black url('/images/background.jpg') top center no-repeat;
+  background-color: black;
+  background-image: url('/images/background.jpg');
+  background-repeat:no-repeat;
+  background-position-y: 44px;
+  background-position-x: center;
   color: #D9D9D9;
   font: 18px/30px 'Roboto Slab', serif;
   position:relative;
@@ -69,10 +73,6 @@ nav{
 
 nav img{
   max-width:100px;
-}
-
-.home nav{
-  display:none;
 }
 
 .center{
