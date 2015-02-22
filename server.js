@@ -107,6 +107,11 @@ app.get('/templates/:templateName.:ext', function(req,res){
   res.render(__dirname + '/client/templates/' + req.params.templateName)
 });
 
+app.all('*', function(req, res, next){
+  res.locals.user = req.user;
+  return next();
+});
+
 // App Routes
 app.get('/', function(req, res){
   res.render('index', { controller: 'home'});

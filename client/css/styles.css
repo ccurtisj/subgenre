@@ -68,11 +68,28 @@ body{
 
 nav{
   background-color: #111;
+  font-family: 'Oswald', sans-serif;
   padding: 4px 30px 6px
 }
 
 nav img{
   max-width:100px;
+}
+
+nav .account{
+  font-size:14px;
+  float: right;
+  margin-top: 2px;
+}
+
+nav .account img{
+  width: 30px;
+  margin-right:5px;
+}
+
+nav .account i.fa{
+  font-size: 14px;
+  margin-right: 5px;
 }
 
 .center{

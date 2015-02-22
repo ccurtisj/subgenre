@@ -24,6 +24,15 @@ body(class="#{typeof(controller) == 'undefined' ? '' : controller}")
   nav
     a(href="/")
       img(src="/images/genreist-logo-header-dark.png")
+    .account
+      if user
+        a(href="/logout")
+          img(src=user.photoUrl)
+          | Sign out
+      else
+        a.btn.btn-primary.btn-sm(href="/auth/twitter")
+          i.fa.fa-twitter
+          | Sign in
   .container
     .row
       .col-lg-8.col-lg-offset-2.col-sm-10.col-sm-offset-1
