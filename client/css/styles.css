@@ -43,6 +43,17 @@ nav a:hover{
   font-family: 'Oswald', sans-serif;
 }
 
+.btn i.fa{
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+
+.btn-lg i.fa{
+  font-size: 22px;
+}
+
+
 /* Layout */
 body{
   background-color: black;
@@ -85,11 +96,6 @@ nav .account{
 nav .account img{
   width: 30px;
   margin-right:5px;
-}
-
-nav .account i.fa{
-  font-size: 14px;
-  margin-right: 5px;
 }
 
 .center{

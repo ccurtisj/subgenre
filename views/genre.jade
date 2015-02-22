@@ -24,7 +24,12 @@ block content
           .lead(ng-show="genre.definitions.length > 0")
             p
               | Got a better definition?#{' '}
-              btn.btn.btn-primary.btn-lg(ng-click="showForm = true") Add Your Definition
+              if user
+                btn.btn.btn-primary.btn-lg(ng-click="showForm = true") Add Your Definition
+              else
+                a.btn.btn-primary.btn-lg(href="/auth/twitter")
+                  i.fa.fa-twitter
+                  | Sign in to Add Your Definition
 
         form.definition-new(ng-submit="createDefinition()" ng-show="genre.definitions.length == 0 || showForm")
           p
