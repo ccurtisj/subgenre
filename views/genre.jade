@@ -31,22 +31,23 @@ block content
                   i.fa.fa-twitter
                   | Sign in to Add Your Definition
 
-        form.definition-new(ng-submit="createDefinition()" ng-show="genre.definitions.length == 0 || showForm")
-          p
-            i Show the world how cool and knowledgable you are by telling us all about {{genre.name}}.
-          p.input-group
-            label.label-lg(for="definition-body") What does #{genre.name} sound like?
-            textarea.form-control(name="definition-name" ng-model="newDefinition.body")
-          p.input-group
-            label(for="definition-examples") Which artists play {{genre.name}}?
-            input.form-control(type="text" name="definition-examples" placeholder="ex: Prince, Sting, The Pizza Underground" ng-model="newDefinition.examples")
+        .definition-new(ng-show="genre.definitions.length == 0 || showForm")
+          form(ng-submit="createDefinition()")
+            p
+              i Show the world how cool and knowledgable you are by telling us all about {{genre.name}}.
+            p.form-group
+              label.label-lg(for="definition-body") What does #{genre.name} sound like?
+              textarea.form-control(name="definition-name" ng-model="newDefinition.body")
+            p.form-group
+              label(for="definition-examples") Which artists play {{genre.name}}?
+              input.form-control(type="text" name="definition-examples" placeholder="ex: Prince, Sting, The Pizza Underground" ng-model="newDefinition.examples")
 
-          p.input-group
-            label(for="definition-alternatives") Does {{genre.name}} have any nicknames?
-            input.form-control(type="text" name="definition-alternatives" placeholder="ex: Drone metal, Drone Doom, Power Ambient" ng-model="newDefinition.alternatives")
-          .controls
-            a.cancel(href="#" ng-click="clearAndCloseForm(); $event.preventDefault()" ng-if="genre.definitions.length > 0") Cancel
-            button.btn.btn-primary.btn-lg(type="submit") Add Definition
+            p.form-group
+              label(for="definition-alternatives") Does {{genre.name}} have any nicknames?
+              input.form-control(type="text" name="definition-alternatives" placeholder="ex: Drone metal, Drone Doom, Power Ambient" ng-model="newDefinition.alternatives")
+            .controls
+              a.cancel(href="#" ng-click="clearAndCloseForm(); $event.preventDefault()" ng-if="genre.definitions.length > 0") Cancel
+              button.btn.btn-primary.btn-lg(type="submit") Add Definition
 
     .row
       .col-md-12

@@ -33,15 +33,16 @@ block content
         .modal-content
           .modal-body
             h4 Add a new genre
-            form(ng-submit='createSubGenre()')
-              .form-group
+            form(name="genreForm" ng-submit='createSubGenre()')
+
+              .form-group(ng-class="{'has-error': !genreForm.name.$valid}")
                 label(for="name") What is the name of this Subgenre?
-                input.form-control(type="text" name="name" ng-model="newGenre.name")
+                input.form-control(type="text" name="name" ng-model="newGenre.name" required)
                 p.help-block Skip the punctuation please (ex: Ska Punk over Ska-Punk)
 
               .form-group
                 label(for="parent-genre") Pick a parent genre
-                select(name="parent-genre" ng-model="newGenre.parentGenre")
+                select(name="parent-genre" ng-model="newGenre.parentGenre" required)
                   option(ng-repeat="genre in parentGenres" value="{{genre._id}}") {{genre.name}}
 
               .controls

@@ -122,7 +122,7 @@ form a.cancel{
   top: 2px;
 }
 
-form.definition-new{
+.definition-new{
 
 }
 
@@ -146,9 +146,13 @@ form textarea.form-control{
   padding: 24px 18px;
 }
 
-.input-group{
+.form-group{
   margin-bottom:20px;
   width : 100%;
+}
+
+.form-group.has-error label{
+  color:#a94442;
 }
 
 form .controls{
