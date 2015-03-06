@@ -4,6 +4,13 @@ block head
   script(src='/js/typeahead.jquery.js')
   script(src='/js/controllers/home-controller.js')
 
+  style.
+    .genres {
+      font-size: 25px;
+      line-height: 35px;
+    }
+
+
 
 block content
   div(ng-controller='homeController' ng-init="initHomepage()")
@@ -22,9 +29,9 @@ block content
       .col-sm-6.col-md-5
         h3 So What's All This, Then?
         p Think Wikipedia for music genres, then crank it up to eleven.
-      .col-sm-6.col-md-7
+      .col-sm-6.col-md-7.genres
         h3 Explore Some Genres
-        ul
+        ul.list-unstyled
           li(ng-repeat='genre in parentGenres')
             a(href='/genres/{{genre.slug}}') {{genre.name}}
 
