@@ -130,6 +130,10 @@ label.label-lg{
   font-size: 22px;
 }
 
+form .form-control, form label, form .help-block{
+  transition:0.25s linear all;
+}
+
 form .btn.btn-primary{
 }
 
@@ -153,6 +157,10 @@ form textarea.form-control{
 
 .form-group.has-error label{
   color:#a94442;
+}
+
+.form-group.has-error input{
+  border-width: 4px;
 }
 
 form .controls{

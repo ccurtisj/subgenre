@@ -78,10 +78,14 @@ app.controller('homeController', ['$scope',  '$resource', '_', function($scope, 
     cb(matches);
   }
 
-  $scope.createSubGenre = function(){
-    var genre = new Genre($scope.newGenre);
-    genre.$save(function(genre){
-      window.location = '/genres/' + genre.slug
-    });
+  $scope.createSubGenre = function(genreForm){
+    if(genreForm.$valid){
+      var genre = new Genre(newGenre);
+      genre.$save(function(genre){
+        window.location = '/genres/' + genre.slug
+      });
+    } else{
+      console.log('form is invalid, not saving')
+    }
   };
 }]);
